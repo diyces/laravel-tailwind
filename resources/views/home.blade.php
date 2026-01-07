@@ -21,9 +21,13 @@
     </nav>
 
     <main class="flex-1 flex items-center justify-center px-6">
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl w-full">
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl w-full">
-      <h2 class="bg-white rounded-xl font-semibold text-gray-800">
+    <!-- CARD 1 -->
+    <div class="bg-white rounded-xl shadow-xl p-6
+                hover:shadow-2xl hover:-translate-y-1
+                transition-all duration-300">
+      <h2 class="text-xl font-semibold text-gray-800">
         Website Portofolio
       </h2>
       <p class="text-gray-600 mt-2">
@@ -31,7 +35,7 @@
       </p>
       <div class="mt-4 flex justify-between items-center">
         <span class="text-sm text-indigo-600 font-medium">
-            Laravel • Tailwind
+          Laravel • Tailwind
         </span>
         <a href="#" class="text-indigo-600 hover:underline">
           Lihat →
@@ -39,14 +43,16 @@
       </div>
     </div>
 
-    <div class="bg-white rounded-xl shadow-xl p-6 hover:shadow-2xl transition">
+    <!-- CARD 2 -->
+    <div class="bg-white rounded-xl shadow-xl p-6
+                hover:shadow-2xl hover:-translate-y-1
+                transition-all duration-300">
       <h2 class="text-xl font-semibold text-gray-800">
         Landing Page
       </h2>
       <p class="text-gray-600 mt-2">
         Landing page responsive tanpa framework JS.
       </p>
-
       <div class="mt-4 flex justify-between items-center">
         <span class="text-sm text-green-600 font-medium">
           HTML • Tailwind
@@ -56,6 +62,8 @@
         </a>
       </div>
     </div>
-    </main>
+
+  </div>
+</main>
 </body>
 </html>

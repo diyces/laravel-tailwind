@@ -20,6 +20,8 @@
         </div>
     </nav>
 
+    <h1 class="text-xl font-semibold text-gray-800">Selamat Datang Di Web Saya!</h1>
+
     <main class="flex-1 flex items-center justify-center px-6">
   <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl w-full">
 

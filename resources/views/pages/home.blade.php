@@ -8,9 +8,8 @@
 <section class="min-h-screen pt-32 bg-gray-100">
     <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
 
-        <!-- TEXT -->
         <div>
-            <h1 class="text-5xl font-bold mb-4">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4">
                 Hi, I'm Hadi 👋
             </h1>
 
@@ -32,18 +31,40 @@
             </div>
         </div>
 
-        <!-- IMAGE -->
         <div class="flex justify-center">
-            <div class="w-72 h-72 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-semibold">
-                Your Photo
+            <div class="w-66 h-66 md:w-66 md:h-66 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-semibold">
+                <img src="{{ asset('assets/images/portfolio/women-removebg-preview.png') }}"
+     class="w-60 h-60 rounded-full object-cover bg-blue-100 flex items-center justify-center">
+
             </div>
         </div>
 
     </div>
 </section>
 
+{{-- ABOUT ME --}}
+<section class="py-20">
+  <h2 class="text-3xl font-bold text-center mb-6">About Me</h2>
+
+  <p class="max-w-2xl mx-auto text-center text-gray-600">
+    Gue web developer yang lagi fokus bangun skill Laravel & Tailwind
+    buat masuk dunia kerja digital.
+  </p>
+</section>
+
 
 {{-- PROJECTS --}}
+<section class="py-16">
+  <h2 class="text-3xl font-bold text-center mb-10">Tech Stack</h2>
+
+  <div class="flex justify-center gap-6 flex-wrap">
+    <span class="px-4 py-2 bg-white shadow rounded hover:shadow-lg transition">Laravel</span>
+    <span class="px-4 py-2 bg-white shadow rounded hover:shadow-lg transition">Tailwind</span>
+    <span class="px-4 py-2 bg-white shadow rounded hover:shadow-lg transition">MySQL</span>
+    <span class="px-4 py-2 bg-white shadow rounded hover:shadow-lg transition">Git</span>
+  </div>
+</section>
+
 <section id="projects" class="py-20">
     <h2 class="text-3xl font-bold text-center mb-10">
         My Projects
@@ -78,5 +99,10 @@
         
     </div>
 </section>
+
+<footer class="py-6 text-center text-sm text-gray-500">
+    © {{ date('Y') }} Hadi.dev — Built with Laravel & Tailwind
+</footer>
+
 
 @endsection

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<h1 class="text-2xl font-bold mb-6">My Projects</h1>
+<h1 class="text-2xl font-bold mb-6 text-center"></h1>
 
 @auth
 <a href="{{ route('projects.create') }}"
@@ -35,7 +35,26 @@
             @endauth
         </div>
     @empty
-        <p class="text-gray-500">Belum ada project.</p>
-    @endforelse
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+    @foreach (range(1,6) as $project)
+    <div class="bg-white rounded-xl p-5 shadow-sm">
+        <div class="h-36 bg-slate-200 rounded-lg mb-4"></div>
+
+        <h3 class="font-semibold text-base mb-2">
+            Project Title
+        </h3>
+
+        <p class="text-sm text-gray-600 mb-4">
+            Built using Laravel & Tailwind.
+        </p>
+
+        <a href="#" class="text-blue-600 text-sm">
+            View →
+        </a>
+    </div>
+    @endforeach
+</div>
+
+@endempty
 </div>
 @endsection

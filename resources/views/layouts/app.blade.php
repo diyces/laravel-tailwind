@@ -1,36 +1,43 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="csrf-token" content="{{ csrf_token() }}">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>@yield('title') | Hadi – Web Developer</title>
+<meta name="description" content="Web Developer specializing in Laravel & Tailwind CSS">
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
+    @vite('resources/css/app.css')
+</head>
+<body class="bg-slate-50 text-slate-800">
 
-        <!-- Fonts -->
-        <link rel="preconnect" href="https://fonts.bunny.net">
-        <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+    {{-- Navbar --}}
+    <nav class="fixed top-0 w-full bg-white border-b z-50">
+        <div class="max-w-7xl mx-auto px-6 h-16 flex justify-between items-center">
+            <span class="font-bold text-lg">Hadi.</span>
 
-        <!-- Scripts -->
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
-    </head>
-    <body class="font-sans antialiased">
-        <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
-            @include('layouts.navigation')
-
-            <!-- Page Heading -->
-            @isset($header)
-                <header class="bg-white dark:bg-gray-800 shadow">
-                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                        {{ $header }}
-                    </div>
-                </header>
-            @endisset
-
-            <!-- Page Content -->
-            <main>
-                @yield('content')
-            </main>
+            <div class="flex gap-6 text-sm font-medium">
+                <a href="/" class="hover:text-blue-600">Home</a>
+                <a href="/about" class="hover:text-blue-600">About</a>
+                <a href="/projects" class="hover:text-blue-600">Projects</a>
+                <a href="/contact" class="hover:text-blue-600">Contact</a>
+            </div>
         </div>
-    </body>
+    </nav>
+
+    {{-- Content --}}
+    <main class="pt-16">
+        @yield('content')
+    </main>
+
+    {{-- Footer --}}
+    <footer class="py-8 border-t text-center text-sm text-gray-500">
+        © {{ date('Y') }} Hadi. All rights reserved.
+    </footer>
+
+    <script>
+document.getElementById('menuBtn')?.addEventListener('click', () => {
+    document.getElementById('mobileMenu').classList.toggle('hidden');
+});
+</script>
+
+</body>
 </html>

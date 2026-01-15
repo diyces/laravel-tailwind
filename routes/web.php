@@ -10,6 +10,14 @@ Route::get('/', [HomeController::class, 'index']);
 Route::resource('projects', ProjectController::class);
 
 Route::get('/contact', function () {
+    return view('/pages.contact');
+})->name('contact');
+
+Route::get('/about', function () {
+    return view('pages.about');
+})->name('about');
+
+Route::get('/contact', function () {
     return view('pages.contact');
 })->name('contact');
 

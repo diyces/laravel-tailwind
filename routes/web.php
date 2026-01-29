@@ -5,26 +5,22 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProjectController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', [HomeController::class, 'index']);
+// HOME
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
+// STATIC PAGES
+Route::view('/about', 'pages.about')->name('about');
+Route::view('/contact', 'pages.contact')->name('contact');
+
+// PROJECTS (CRUD)
 Route::resource('projects', ProjectController::class);
 
-Route::get('/contact', function () {
-    return view('/pages.contact');
-})->name('contact');
+// DASHBOARD
+Route::view('/dashboard', 'pages.dashboard')
+    ->middleware(['auth', 'verified'])
+    ->name('dashboard');
 
-Route::get('/about', function () {
-    return view('pages.about');
-})->name('about');
-
-Route::get('/contact', function () {
-    return view('pages.contact');
-})->name('contact');
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
-
+// PROFILE
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

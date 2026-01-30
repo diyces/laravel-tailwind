@@ -9,7 +9,7 @@ class ProjectController extends Controller
 {
     public function index()
     {
-        $projects = Project::latest()->get();
+        $projects = project::all();
         return view('projects.index', compact('projects'));
     }
 
@@ -19,39 +19,14 @@ class ProjectController extends Controller
     }
 
     public function store(Request $request)
-    {
-        $request->validate([
-            'title' => 'required',
-            'description' => 'required',
-            'tech' => 'required',
-        ]);
+{
+    Project::create([
+        'title' => $request->title,
+        'description' => $request->description,
+        'tech' => $request->tech,
+    ]);
 
-        Project::create($request->all());
+    return redirect()->route('projects.index');
+}
 
-        return redirect('/projects')->with('success', 'Project added!');
-    }
-
-    public function edit(Project $project)
-    {
-        return view('projects.edit', compact('project'));
-    }
-
-    public function update(Request $request, Project $project)
-    {
-        $request->validate([
-            'title' => 'required',
-            'description' => 'required',
-            'tech' => 'required',
-        ]);
-
-        $project->update($request->all());
-
-        return redirect('/projects')->with('success', 'Project updated!');
-    }
-
-    public function destroy(Project $project)
-    {
-        $project->delete();
-        return redirect('/projects')->with('success', 'Project deleted!');
-    }
 }

@@ -5,7 +5,7 @@
 @section('content')
 
 <x-sections.hero />
-<x-sections.projects />
-<x-sections.contact />
+{{-- <x-sections.projects /> --}}
+{{-- <x-sections.contact /> --}}
 
 @endsection

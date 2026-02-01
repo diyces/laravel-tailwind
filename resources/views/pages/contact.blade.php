@@ -3,6 +3,7 @@
 @section('title', 'Contact')
 
 @section('content')
+<section class="py-20">
 <form class="space-y-5">
     <input type="text" placeholder="Your Name"
            class="w-full border p-4 rounded-lg text-sm">
@@ -17,5 +18,6 @@
         Send Message
     </button>
 </form>
+
 
 @endsection

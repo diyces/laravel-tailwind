@@ -2,9 +2,9 @@
 
 @section('content')
 <section class="py-20">
-    <h1 class="text-2xl font-bold mb-4">Tambah Project</h1>
+<h1 class="text-2xl font-bold mb-4">Edit Project</h1>
 
-    @if ($errors->any())
+@if ($errors->any())
     <div class="mb-4 p-4 bg-red-100 text-red-700 rounded">
         <ul class="list-disc list-inside">
             @foreach ($errors->all() as $error)
@@ -15,26 +15,32 @@
 @endif
 
 
-    <form method="POST" action="{{ route('projects.store') }}">
+<form method="POST" action="{{ route('projects.update', $project->id) }}">
     @csrf
+    @method('PUT')
 
-<div class="mb-4">
+    <div class="mb-4">
         <label class="block mb-1">Judul</label>
-        <input type="text" name="title" class="border p-2 w-full" placeholder="Judul">
+        <input type="text" name="title"
+               value="{{ old('title', $project->title) }}"
+               class="border p-2 w-full">
     </div>
 
     <div class="mb-4">
         <label class="block mb-1">Deskripsi</label>
-        <textarea name="description" class="border p-2 w-full" placeholder="description"></textarea>
+        <textarea name="description"
+                  class="border p-2 w-full">{{ old('description', $project->description) }}</textarea>
     </div>
 
     <div class="mb-4">
         <label class="block mb-1">Tech</label>
-        <input type="text" name="tech" class="border p-2 w-full" placeholder="Tech">
+        <input type="text" name="tech"
+               value="{{ old('tech', $project->tech) }}"
+               class="border p-2 w-full">
     </div>
 
     <button class="bg-blue-600 text-white px-4 py-2 rounded">
-        Simpan
+        Update
     </button>
 </form>
 </section>

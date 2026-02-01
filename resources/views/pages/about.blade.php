@@ -3,9 +3,7 @@
 @section('title', 'About')
 
 @section('content')
-<section class="py-20 bg-white">
-    <div class="max-w-5xl mx-auto px-4 md:px-6">
-
+<section class="py-20">
         <h2 class="text-2xl md:text-3xl font-bold mb-8">
             About Me
         </h2>
@@ -23,8 +21,6 @@
             </ul>
         </div>
 
-    </div>
+
 </section>
-
-
 @endsection

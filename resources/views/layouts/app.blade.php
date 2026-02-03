@@ -11,7 +11,7 @@
 
 <nav class="fixed top-0 w-full bg-white border-b z-50">
     <div class="max-w-7xl mx-auto px-6 h-16 flex justify-between items-center">
-        <span class="font-bold text-lg">Hadi.</span>
+        <span class="font-bold text-lg">Haikal.</span>
 
         <div class="hidden md:flex gap-6 text-sm font-medium">
             <a href="/">Home</a>

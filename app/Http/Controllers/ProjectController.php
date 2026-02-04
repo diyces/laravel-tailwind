@@ -9,7 +9,7 @@ class ProjectController extends Controller
 {
     public function index()
     {
-        $projects = project::all();
+        $projects = Project::all();
         return view('projects.index', compact('projects'));
     }
 
@@ -45,9 +45,9 @@ public function edit(Project $project)
 public function update(Request $request, Project $project)
 {
     $validated = $request->validate([
-        'title' => '$required|min:3',
-        'description' => '$required|min:10',
-        'tech' => '$required|min:2',
+        'title' => 'required|min:3',
+        'description' => 'required|min:10',
+        'tech' => 'required|min:2',
     ]);
 
     $project->update($validated);

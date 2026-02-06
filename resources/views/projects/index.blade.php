@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<section class="py-20">
+<section class="py-10">
 <h2 class="text-2xl md:text-3xl font-bold mb-8">Daftar Project</h2>
 
 <div class="grid md:grid-cols-2 gap-8">

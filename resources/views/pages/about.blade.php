@@ -3,7 +3,7 @@
 @section('title', 'About')
 
 @section('content')
-<section class="py-20">
+<section class="py-10">
         <h2 class="text-2xl md:text-3xl font-bold mb-8">
             About Me
         </h2>

@@ -18,6 +18,7 @@
             <a href="/about">About</a>
             <a href="/projects">Projects</a>
             <a href="/contact">Contact</a>
+            
         </div>
 
         <button id="menuBtn" class="md:hidden text-2xl">☰</button>
@@ -29,6 +30,7 @@
         <a href="/about" class="block px-6 py-3">About</a>
         <a href="/projects" class="block px-6 py-3">Projects</a>
         <a href="/contact" class="block px-6 py-3">Contact</a>
+
     </div>
 </nav>
 

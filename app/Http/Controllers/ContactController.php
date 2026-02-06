@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Contact;
 use Illuminate\Http\Request;
 
+$unreadCound = Contact::where('is_read', false)->count();
+
 class ContactController extends Controller
 {
     

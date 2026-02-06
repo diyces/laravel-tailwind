@@ -20,4 +20,18 @@
         </x-ui.button-secondary>
     </div>
 </div>
+
+<h1 class="text-xl font-bold mb-4">Admin Dashboard</h1>
+
+<a href="/admin/contacts" class="relative inline-block">
+    Inbox
+
+    @if(isset($unreadCount) && $unreadCount > 0)
+        <span class="absolute -top-2 -right-3 bg-red-500 text-white
+                     text-xs px-2 py-0.5 rounded-full">
+            {{ $unreadCount }}
+        </span>
+    @endif
+</a>
+
 @endsection

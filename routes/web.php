@@ -17,9 +17,10 @@ Route::view('/contact', 'pages.contact')->name('contact');
 Route::resource('projects', ProjectController::class);
 
 // DASHBOARD
-Route::view('/dashboard', 'pages.dashboard')
-    ->middleware(['auth', 'verified'])
-    ->name('dashboard');
+Route::middleware(['auth', 'admin'])->group(function () {
+    Route::get('/dashboard', fn () => view('dashboard'))->name('dashboard');
+    Route::get('/admin/contacts', [ContactController::class, 'index']);
+});
 
 // PROFILE
 Route::middleware('auth')->group(function () {

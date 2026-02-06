@@ -3,7 +3,7 @@
 @section('title', 'Contact')
 
 @section('content')
-<section class="py-20">
+<section class="py-10">
   <div class="max-w-xl mx-auto p-4 flex flex-col items-center">
 
     <h1 class="text-2xl md:text-3xl font-bold mb-8">

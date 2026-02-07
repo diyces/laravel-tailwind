@@ -1,41 +1,14 @@
 <?php
 
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\ProjectController;
-use App\Http\Controllers\ContactController;
+use App\Http\Controllers\Public\HomeController;
+use App\Http\Controllers\Public\ProjectController;
+use App\Http\Controllers\Public\ContactController;
 use Illuminate\Support\Facades\Route;
 
-// HOME
-Route::get('/', [HomeController::class, 'index'])->name('home');
-
-// STATIC PAGES
-Route::view('/about', 'pages.about')->name('about');
-Route::view('/contact', 'pages.contact')->name('contact');
-
-// PROJECTS (CRUD)
-Route::resource('projects', ProjectController::class);
-
-// DASHBOARD
-Route::middleware(['auth', 'admin'])->group(function () {
-    Route::get('/dashboard', fn () => view('dashboard'))->name('dashboard');
-    Route::get('/admin/contacts', [ContactController::class, 'index']);
-});
-
-// PROFILE
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
-
-// CONTACT
+Route::get('/', [HomeController::class, 'index']);
+Route::get('/about', [AboutController::class, 'index']);
+Route::get('/projects', [ProjectController::class, 'index']);
+Route::get('/projects/{slug}', [ProjectController::class, 'show']);
 Route::post('/contact', [ContactController::class, 'store']);
-
-Route::prefix('admin')->group(function () {
-    Route::get('/contacts', [ContactController::class,'index']);
-    Route::get('/contacts/{contact}', [ContactController::class, 'show']);
-    Route::delete('/contacts/{contact}', [ContactController::class, 'destroy']);
-});
 
 require __DIR__.'/auth.php';

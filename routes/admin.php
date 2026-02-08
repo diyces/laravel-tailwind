@@ -1,20 +1,19 @@
 <?php
 
 use App\Http\Controllers\Admin\DashboardController;
-use App\Http\Controllers\Admin\ProjectController;
-use App\Http\Controllers\Admin\ContactController;
+use App\Http\Controllers\Admin\ProjectCRUDController;
+use App\Http\Controllers\Admin\ContactCRUDController;
 use Illuminate\Support\Facades\Route;
 
-Route::middleware('auth')
-    ->prefix('admin')
-    ->name('admin.')
-    ->group(function () {
+Route::get('/dashboard', [DashboardController::class, 'index'])
+    ->name('admin.dashboard');
 
-        Route::get('/dashboard', [DashboardController::class, 'index'])
-            ->name('dashboard');
+Route::resource('projects', ProjectCRUDController::class)
+    ->only(['index', 'show'])
+    ->names('admin.projects');
 
-        Route::resource('projects', ProjectController::class);
-        Route::resource('contacts', ContactController::class)->only(['index','show']);
-    });
+Route::resource('contacts', ContactCRUDController::class)
+    ->only(['index', 'show'])
+    ->names('admin.contacts');
 
-require __DIR__.'/auth.php';
+    require __DIR__.'/auth.php';

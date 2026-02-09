@@ -5,7 +5,7 @@
 <h2 class="text-2xl md:text-3xl font-bold mb-8">Daftar Project</h2>
 
 <div class="grid md:grid-cols-2 gap-8">
-    <a class="text-sm md:text-base text-gray-600 landing-relaxed" href="{{ route('projects.create') }}">
+    <a class="text-sm md:text-base text-gray-600 landing-relaxed" href="{{ route('admin.projects.create') }}">
         + Tambah Project
     </a>
     </div>
@@ -19,12 +19,12 @@
             <em>{{ $project->tech }}</em>
 
            <form method="POST"
-      action="{{ route('projects.destroy', $project->id) }}"
+      action="{{ route('admin.projects.destroy', $project->id) }}"
       onsubmit="return confirm('Yakin mau hapus project ini? Data tidak bisa dikembalikan.')">
     @csrf
     @method('DELETE')
 
-    <a href="{{ route('projects.edit', $project->id) }}"
+    <a href="{{ route('admin.projects.edit', $project->id) }}"
    class="text-blue-600 text-sm mr-3">
     Edit
 </a>

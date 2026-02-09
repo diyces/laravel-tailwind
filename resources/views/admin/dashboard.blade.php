@@ -11,13 +11,15 @@
     </p>
 
     <div class="flex gap-3">
-        <x-ui.button-primary href="{{ route('projects.index') }}">
+        <x-ui.primary-button href="{{ route('projects.index') }}">
             Kelola Project
-        </x-ui.button-primary>
-
-        <x-ui.button-secondary href="{{ route('profile.edit') }}">
+        </x-ui.primary-button>
+        {{--
+        <x-ui.secondary-button href="{{ route('profile.edit') }}">
             Edit Profile
-        </x-ui.button-secondary>
+        </x-ui.secondary-button>
+        --}}
+
     </div>
 </div>
 

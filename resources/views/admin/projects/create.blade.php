@@ -15,7 +15,7 @@
 @endif
 
 
-    <form method="POST" action="{{ route('projects.store') }}">
+    <form method="POST" action="{{ route('admin.projects.store') }}">
     @csrf
 
 <div class="mb-4">

@@ -15,7 +15,7 @@
 @endif
 
 
-<form method="POST" action="{{ route('projects.update', $project->id) }}">
+<form method="POST" action="{{ route('admin.projects.update', $project->id) }}">
     @csrf
     @method('PUT')
 

@@ -33,15 +33,6 @@
 
     </div>
 
-    <a href="{{ route('logout') }}"
-   onclick="event.preventDefault(); this.closest('form').submit();">
-   Logout
-</a>
-
-<form method="POST" action="{{ route('logout') }}" class="hidden">
-    @csrf
-</form>
-
 </nav>
 
     {{-- Content --}}

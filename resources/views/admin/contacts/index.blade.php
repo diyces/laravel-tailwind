@@ -8,7 +8,11 @@
     <p>
         {{ $contact->name }} - 
         {{ $contact->is_read ? 'Read' : 'Unread' }}
-        <a href="/admin/contacts/{{ $contact->id }}">Detail</a>
+
+        <a href="{{ route('admin.contacts.show', $contact->id) }}">
+            Detail
+        </a>
     </p>
 @endforeach
+
 @endsection

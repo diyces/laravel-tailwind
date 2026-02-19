@@ -6,11 +6,9 @@ use App\Http\Controllers\Admin\ContactCRUDController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/dashboard', [DashboardController::class, 'index'])
-    ->name('admin.dashboard');
+    ->name('dashboard');
 
-Route::resource('projects', ProjectCRUDController::class)
-    ->names('admin.projects');
+Route::resource('projects', ProjectCRUDController::class);
 
 Route::resource('contacts', ContactCRUDController::class)
-    ->only(['index', 'show'])
-    ->names('admin.contacts');
+    ->only(['index', 'show']);

@@ -1,4 +1,4 @@
-{}{--
+{{--
     <form method="POST" action="{{ route('register') }}">
         @csrf
 

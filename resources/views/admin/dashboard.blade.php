@@ -3,8 +3,10 @@
 @section('content')
 <div class="max-w-4xl mx-auto py-10">
     <h1 class="text-2xl font-bold">
-        Halo, Hadi 👋
+        Halo, Di 👋
     </h1>
+
+    <h1 class="text-3xl font-bold">{{ $name }}</h1>
 
     <p class="text-gray-600 mb-6">
         Kamu sudah login.

@@ -9,8 +9,6 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        $name = "Kucing";
-
-        return view('admin.dashboard', compact('name'));
+        return view('admin.dashboard');
     }
 }

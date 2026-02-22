@@ -5,8 +5,7 @@
     <h1 class="text-2xl font-bold">
         Halo, Di 👋
     </h1>
-
-    <h1 class="text-3xl font-bold">{{ $name }}</h1>
+    
 
     <p class="text-gray-600 mb-6">
         Kamu sudah login.

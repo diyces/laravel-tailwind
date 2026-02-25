@@ -1,5 +1,4 @@
-{{-- resources/views/public/projects/show.blade.php --}}
-@extends('layouts.public')
+@extends('layouts.app')
 
 @section('title', $project->title)
 
@@ -18,14 +17,18 @@
         {{ $project->description }}
     </p>
 
-    @if ($project->tech_stack)
+    <p class="'text-gray-700 mb-6">
+        {{ $project->tech }}
+    </p>
+
+    {{--@if ($project->tech_stack)
         <div class="mb-6">
             <h3 class="font-semibold mb-2">Tech Stack</h3>
             <p class="text-gray-600">
                 {{ $project->tech_stack }}
             </p>
         </div>
-    @endif
+    @endif--}}
 
     <div class="flex gap-4">
         @if ($project->github_url)

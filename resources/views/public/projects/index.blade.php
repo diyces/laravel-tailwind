@@ -24,6 +24,10 @@
                         {{ \Illuminate\Support\Str::limit($project->description, 100) }}
                     </p>
 
+                    <p class="text-gray-600 mb-4">
+                        {{ \Illuminate\Support\Str::limit($project->tech, 50) }}
+                    </p>
+
                     @if ($project->slug)
                         <a
                             href="{{ route('projects.show', ['slug' => $project->slug]) }}"

@@ -23,11 +23,11 @@
 
         <div class="flex flex-col sm:flex-row gap-3">
             <a href="/projects"
-               class="px-6 py-3 text-center bg-blue-600 text-white rounded-lg">
+               class="px-6 py-3 text-center bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">
                 View Projects
             </a>
             <a href="/contact"
-               class="px-6 py-3 text-center border rounded-lg">
+               class="px-6 py-3 text-center border rounded-lg hover:bg-blue-100 transition">
                 Contact Me
             </a>
         </div>

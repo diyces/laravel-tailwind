@@ -29,13 +29,28 @@
     <div class="mb-4">
         <label class="block mb-1">Deskripsi</label>
         <textarea name="description"
-                  class="border p-2 w-full">{{ old('description', $project->description) }}</textarea>
+                  value="{{ old('description', $project->description) }}"
+                  class="border p-2 w-full">
     </div>
 
     <div class="mb-4">
         <label class="block mb-1">Tech</label>
         <input type="text" name="tech"
                value="{{ old('tech', $project->tech) }}"
+               class="border p-2 w-full">
+    </div>
+
+    <div class="mb-4">
+        <label class="block mb-1">Github_url</label>
+        <input type="text" name="github_url"
+                value="{{ old ('github_url', $project->github_url) }}"
+                class="border p-2 w-full">
+    </div>
+
+    <div class="mb-4">
+        <label class="block mb-1">Demo_url</label>
+        <input type="text" name="demo_url"
+               value="{{ old ('demo_url', $project->demo_url) }}"
                class="border p-2 w-full">
     </div>
 

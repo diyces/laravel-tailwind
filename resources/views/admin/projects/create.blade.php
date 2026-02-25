@@ -33,6 +33,16 @@
         <input type="text" name="tech" class="border p-2 w-full" placeholder="Tech">
     </div>
 
+    <div class="mb-4">
+        <label class="block mb-1">Github</label>
+        <input class="text" name="github" class="border w-full" placeholder="Github">
+    </div>
+
+    <div class="mb-4">
+        <label class="block mb-1">Demo</label>
+        <input class="text" name="demo" class="border w-full" placeholder="Demo">
+    </div>
+
     <button class="bg-blue-600 text-white px-4 py-2 rounded">
         Simpan
     </button>

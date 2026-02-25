@@ -15,6 +15,8 @@ class Project extends Model
         'description',
         'slug',
         'tech',
+        'github_url',
+        'demo_url',
     ];
 
     protected static function boot()

@@ -9,15 +9,15 @@
 </head>
 <body class="bg-slate-50 text-slate-800 overflow-y-scroll">
 
-<nav class="fixed top-0 w-full bg-white border-b z-50">
+<nav class="fixed top-0 w-full bg-white border-b z-5">
     <div class="max-w-7xl mx-auto px-6 h-16 flex justify-between items-center">
         <span class="font-bold text-lg">Hadi.</span>
 
         <div class="hidden md:flex gap-6 text-sm font-medium">
-            <a href="/">Home</a>
-            <a href="/about">About</a>
-            <a href="/projects">Projects</a>
-            <a href="/contact">Contact</a>
+            <a class="hover:text-blue-700 transition" href="/">Home</a>
+            <a class="hover:text-blue-700 transition" href="/about">About</a>
+            <a class="hover:text-blue-700 transition" href="/projects">Projects</a>
+            <a class="hover:text-blue-700 transition" href="/contact">Contact</a>
             
         </div>
 

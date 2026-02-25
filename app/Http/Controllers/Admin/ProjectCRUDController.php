@@ -36,6 +36,8 @@ class ProjectCRUDController extends Controller
             'title'       => 'required|string|min:3|max:255',
             'description' => 'required|string',
             'tech'        => 'required|string',
+            'github_url'  => 'required|string',
+            'demo_url'    => 'required|string',
         ]);
 
         $validated['slug'] = $this->generateUniqueSlug($validated['title']);
@@ -63,7 +65,9 @@ class ProjectCRUDController extends Controller
         $validated = $request->validate([
             'title'       => 'required|string|min:3|max:255',
             'description' => 'required|string',
-            'tech'        => 'required|string'
+            'tech'        => 'required|string',
+            'gitbhub_url' => 'required|string',
+            'demo_url'    => 'required|string',
         ]);
 
         // Update slug hanya jika title berubah

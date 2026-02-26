@@ -9,13 +9,16 @@ class ContactCRUDController extends Controller
 {
     public function index()
     {
-        $contacts = Contact::latest()->get();
+        $contacts = Contact::latest()->paginate(20);
+
         return view('admin.contacts.index', compact('contacts'));
     }
 
     public function show(Contact $contact)
     {
-        $contact->update(['is_read' => true]);
+        if (! $contact->is_read) {
+            $contact->update(['is_read' => true]);
+        }
 
         return view('admin.contacts.show', compact('contact'));
     }

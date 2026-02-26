@@ -14,6 +14,21 @@ class Contact extends Model
         'email',
         'subject',
         'message',
-        'is_read'
     ];
+
+    protected $casts = [
+        'is_read' => 'boolean',
+    ];
+
+    // Scope untuk pesan belum dibaca
+    public function scopeUnread($query)
+    {
+        return $query->where('is_read', false);
+    }
+
+    // Scope untuk pesan sudah dibaca
+    public function scopeRead($query)
+    {
+        return $query->where('is_read', true);
+    }
 }

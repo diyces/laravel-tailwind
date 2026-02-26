@@ -13,10 +13,17 @@ class Project extends Model
     protected $fillable = [
         'title',
         'description',
-        'slug',
-        'tech',
+        'tech_stack',
+        'thumbnail_path',
         'github_url',
         'demo_url',
+        'is_featured',
+        'is_published',
+    ];
+
+    protected $casts = [
+        'is_featured' => 'boolean',
+        'is_published' => 'boolean',
     ];
 
     protected static function boot()
@@ -29,7 +36,10 @@ class Project extends Model
 
         static::updating(function ($project) {
             if ($project->isDirty('title')) {
-                $project->slug = static::generateUniqueSlug($project->title, $project->id);
+                $project->slug = static::generateUniqueSlug(
+                    $project->title,
+                    $project->id
+                );
             }
         });
     }
@@ -50,5 +60,20 @@ class Project extends Model
         }
 
         return $slug;
+    }
+
+    public function getTechArrayAttribute(): array
+{
+    if (! $this->tech_stack) {
+        return [];
+    }
+
+    return array_map('trim', explode(',', $this->tech_stack));
+}
+
+    // Accessor for excerpt
+    public function getExcerptAttribute(): string
+    {
+        return Str::limit($this->description, 100);
     }
 }

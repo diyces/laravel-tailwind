@@ -13,9 +13,22 @@ return new class extends Migration
 {
     Schema::create('projects', function (Blueprint $table) {
         $table->id();
+
         $table->string('title');
+        $table->string('slug')->unique();
+
         $table->text('description');
-        $table->string('tech');
+
+        $table->string('tech_stack')->nullable();
+
+        $table->string('thumbnail_path')->nullable();
+
+        $table->string('github_url')->nullable();
+        $table->string('demo_url')->nullable();
+
+        $table->boolean('is_featured')->default(false);
+        $table->boolean('is_published')->default(true);
+
         $table->timestamps();
     });
 }

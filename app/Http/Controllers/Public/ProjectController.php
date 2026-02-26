@@ -7,14 +7,14 @@ use App\Models\Project;
 
 class ProjectController extends Controller
 {
-    public function index()
-    {
-        $projects = Project::whereNotNull('slug')
-            ->latest()
-            ->get();
+   public function index()
+{
+    $projects = Project::where('is_published', true)
+        ->latest()
+        ->paginate(9);
 
-        return view('public.projects.index', compact('projects'));
-    }
+    return view('public.projects.index', compact('projects'));
+}
 
     public function show(string $slug)
     {

@@ -7,32 +7,21 @@
 
     @vite('resources/css/app.css')
 </head>
-<body class="bg-slate-50 text-slate-800 overflow-y-scroll">
+<body class="bg-slate-50 text-slate-800 ">
 
-<nav class="fixed top-0 w-full bg-white border-b z-5">
+<nav class="fixed top-0 w-full bg-white border-b z-10">
     <div class="max-w-7xl mx-auto px-6 h-16 flex justify-between items-center">
         <span class="font-bold text-lg">Hadi.</span>
 
         <div class="hidden md:flex gap-6 text-sm font-medium">
-            <a class="hover:text-blue-700 transition" href="/">Home</a>
-            <a class="hover:text-blue-700 transition" href="/about">About</a>
-            <a class="hover:text-blue-700 transition" href="/projects">Projects</a>
-            <a class="hover:text-blue-700 transition" href="/contact">Contact</a>
+            <a class="hover:text-blue-700 transition" href="{{ route('home') }}">Home</a>
+            <a class="hover:text-blue-700 transition" href="{{ route('about') }}">About</a>
+            <a class="hover:text-blue-700 transition" href="{{ route('projects.index') }}">Projects</a>
+            <a class="hover:text-blue-700 transition" href="{{ route('contact.index') }}">Contact</a>
             
         </div>
-
-        <button id="menuBtn" class="md:hidden text-2xl">☰</button>
+        
     </div>
-
-    {{-- Mobile Menu --}}
-    <div id="mobileMenu" class="hidden md:hidden bg-white border-t">
-        <a href="/" class="block px-6 py-3">Home</a>
-        <a href="/about" class="block px-6 py-3">About</a>
-        <a href="/projects" class="block px-6 py-3">Projects</a>
-        <a href="/contact" class="block px-6 py-3">Contact</a>
-
-    </div>
-
 </nav>
 
     {{-- Content --}}

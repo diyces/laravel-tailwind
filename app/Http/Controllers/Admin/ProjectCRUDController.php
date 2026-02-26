@@ -5,13 +5,10 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Project;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 
 class ProjectCRUDController extends Controller
 {
-    /**
-     * Display list of projects
-     */
     public function index()
     {
         $projects = Project::latest()->paginate(10);
@@ -19,28 +16,31 @@ class ProjectCRUDController extends Controller
         return view('admin.projects.index', compact('projects'));
     }
 
-    /**
-     * Show create form
-     */
     public function create()
     {
         return view('admin.projects.create');
     }
 
-    /**
-     * Store new project
-     */
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'title'       => 'required|string|min:3|max:255',
-            'description' => 'required|string',
-            'tech'        => 'required|string',
-            'github_url'  => 'required|string',
-            'demo_url'    => 'required|string',
+            'title'         => ['required', 'string', 'min:3', 'max:255'],
+            'description'   => ['required', 'string'],
+            'tech_stack'    => ['nullable', 'string'],
+            'github_url'    => ['nullable', 'url'],
+            'demo_url'      => ['nullable', 'url'],
+            'thumbnail'     => ['nullable', 'image', 'max:2048'],
+            'is_featured'   => ['nullable', 'boolean'],
+            'is_published'  => ['nullable', 'boolean'],
         ]);
 
-        $validated['slug'] = $this->generateUniqueSlug($validated['title']);
+        if ($request->hasFile('thumbnail')) {
+            $validated['thumbnail_path'] =
+                $request->file('thumbnail')->store('projects', 'public');
+        }
+
+        $validated['is_featured']  = $request->boolean('is_featured');
+        $validated['is_published'] = $request->boolean('is_published');
 
         Project::create($validated);
 
@@ -49,34 +49,35 @@ class ProjectCRUDController extends Controller
             ->with('success', 'Project berhasil dibuat.');
     }
 
-    /**
-     * Show edit form
-     */
     public function edit(Project $project)
     {
         return view('admin.projects.edit', compact('project'));
     }
 
-    /**
-     * Update project
-     */
     public function update(Request $request, Project $project)
     {
         $validated = $request->validate([
-            'title'       => 'required|string|min:3|max:255',
-            'description' => 'required|string',
-            'tech'        => 'required|string',
-            'gitbhub_url' => 'required|string',
-            'demo_url'    => 'required|string',
+            'title'         => ['required', 'string', 'min:3', 'max:255'],
+            'description'   => ['required', 'string'],
+            'tech_stack'    => ['nullable', 'string'],
+            'github_url'    => ['nullable', 'url'],
+            'demo_url'      => ['nullable', 'url'],
+            'thumbnail'     => ['nullable', 'image', 'max:2048'],
+            'is_featured'   => ['nullable', 'boolean'],
+            'is_published'  => ['nullable', 'boolean'],
         ]);
 
-        // Update slug hanya jika title berubah
-        if ($project->title !== $validated['title']) {
-            $validated['slug'] = $this->generateUniqueSlug(
-                $validated['title'],
-                $project->id
-            );
+        if ($request->hasFile('thumbnail')) {
+            if ($project->thumbnail_path) {
+                Storage::disk('public')->delete($project->thumbnail_path);
+            }
+
+            $validated['thumbnail_path'] =
+                $request->file('thumbnail')->store('projects', 'public');
         }
+
+        $validated['is_featured']  = $request->boolean('is_featured');
+        $validated['is_published'] = $request->boolean('is_published');
 
         $project->update($validated);
 
@@ -85,38 +86,16 @@ class ProjectCRUDController extends Controller
             ->with('success', 'Project berhasil diperbarui.');
     }
 
-    /**
-     * Delete project
-     */
     public function destroy(Project $project)
     {
+        if ($project->thumbnail_path) {
+            Storage::disk('public')->delete($project->thumbnail_path);
+        }
+
         $project->delete();
 
         return redirect()
             ->route('admin.projects.index')
             ->with('success', 'Project berhasil dihapus.');
-    }
-
-    /**
-     * Generate unique slug
-     */
-    protected function generateUniqueSlug(string $title, $ignoreId = null): string
-    {
-        $slug = Str::slug($title);
-        $original = $slug;
-        $counter = 1;
-
-        while (
-            Project::where('slug', $slug)
-                ->when($ignoreId, function ($query) use ($ignoreId) {
-                    return $query->where('id', '!=', $ignoreId);
-                })
-                ->exists()
-        ) {
-            $slug = "{$original}-{$counter}";
-            $counter++;
-        }
-
-        return $slug;
     }
 }

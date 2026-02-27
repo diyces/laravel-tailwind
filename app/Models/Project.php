@@ -76,4 +76,10 @@ class Project extends Model
     {
         return Str::limit($this->description, 100);
     }
+
+    public function scopePublished($query)
+{
+    return $query->where('is_published', true);
+}
+
 }

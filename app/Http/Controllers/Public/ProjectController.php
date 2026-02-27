@@ -17,9 +17,11 @@ class ProjectController extends Controller
 }
 
     public function show(string $slug)
-    {
-        $project = Project::where('slug', $slug)->firstOrFail();
+{
+    $project = Project::where('slug', $slug)
+        ->where('is_published', true)
+        ->firstOrFail();
 
-        return view('public.projects.show', compact('project'));
-    }
+    return view('public.projects.show', compact('project'));
+}
 }

@@ -9,7 +9,7 @@ class AboutController extends Controller
 {
     public function index()
     {
-        $profile = Profile::first();
+        $profile = Profile::find(1);
 
         return view('public.about', compact('profile'));
     }

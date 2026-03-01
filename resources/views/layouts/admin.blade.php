@@ -24,6 +24,10 @@
                     Dashboard
                 </a>
 
+                <a href="{{ route('admin.profile.edit') }}" class="block hover:text-blue-600">
+                    Manage Profile
+                </a>
+
                 <a href="{{ route('admin.projects.index') }}" class="block hover:text-blue-600">
                     Manage Projects
                 </a>

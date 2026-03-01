@@ -48,11 +48,13 @@ Route::middleware('auth')
         Route::resource('contacts', ContactCRUDController::class)
             ->only(['index', 'show']);
 
-        Route::get('/profile/edit', [ProfileController::class, 'edit'])
-            ->name('profile.edit');
+        Route::prefix('profile')->name('profile.')->group(function () {
+        Route::get('/', [ProfileController::class, 'edit'])
+        ->name('edit');
 
-        Route::put('/profile/update', [ProfileController::class, 'update'])
-            ->name('profile.update');
+        Route::put('/', [ProfileController::class, 'update'])
+        ->name('update');
+});
     });
 
 
